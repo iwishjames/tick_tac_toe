@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+
+  <aside class=playerOneCard>
+    <div class= "dogCelebration">
+      <h2>Player 1</h2>
+      <img class="DogWinner" src="media/dog_winner.gif" alt="dog celebrating win - animoji">
+      <!-- <img class="DogLoser" src="media/dog_loser.gif" alt="dog mourning loss - animoji"> -->
+      <h3>Point(s): 1</h3>
+      <p class="Life-line">Life-line:</p>
+      <button type="button" name="undo">Undo</button>
+    </div>
+    </aside>
+
+
+  <main class="gameBoard">
+    <h1>Tic Tac Toe</h1>
+    <div class="playerTurn">
+      <p>
+        Player 2's turn.
+        </p>
+      </div>
+    <div class= "ColumnOne">
+      <div class="cell">
+        <a id="a1" href="">🐶</a>
+      </div>
+
+      <div class="cell">
+        <a id="a2" class="hidden" href="">🍕</a>
+      </div>
+
+      <div class="cell">
+        <a id="a3" href="">🐱</a>
+      </div>
+    </div>
+
+    <div class= "ColumnTwo">
+      <div class="cell">
+        <a id="b1" class="hidden" href="">🐶</a>
+      </div>
+
+      <div class="cell" >
+        <a id="b2" href="">🐶</a>
+      </div>
+
+      <div class="cell">
+        <a id="b3" href="">🐱</a>
+      </div>
+    </div>
+
+    <div class= "ColumnThree">
+      <div class="cell">
+        <a id="c1" class="hidden" href="">🍔</a>
+      </div>
+
+      <div class="cell">
+        <a id="c2" class="hidden" href="">🐶</a>
+      </div>
+
+      <div class="cell">
+        <a id="c3" href="">🐶</a>
+
+      </div>
+        <h2 class="winnerMessage">Player 1 is the Winner!</h2>
+    </div>
+</main>
+  <!-- <div class="playerSelect">
+    <p>
+      Player 1 : 🍔
+      </p>
+    </div> -->
+
+
+    <!-- <div class="playerSelect">
+      <p>
+        Player 2 : 🐶
+        </p>
+      </div>
+  </main> -->
+
+<aside class=playerTwoCard>
+<div class= "catCelebration">
+  <!-- <img class="CatWinner" src="media/cat_winner.gif" alt="cat celebrating win - animoji"> -->
+  <h2>Player 2</h2>
+  <img class="CatLoser" src="media/cat_loser.gif" alt="cat mourning loss - animoji">
+  <h3>Point(s): 0</h3>
+  <p class="Life-line">Life-line:</p>
+  <button class="buttonActive" type="button" name="undo">Undo</button>
+</div>
+</aside>
+
+<script src="js/jquery.js"></script>
+<script src="js/gamelogic.js"></script>
+
+</body>
+</html>
+
+<!-- Have the option so that they can input what where they want for the Knots or the Cross. e.g. am Emoji.  -->
