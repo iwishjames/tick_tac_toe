@@ -111,8 +111,12 @@ main {
 
 h3 {
   text-align: center;
-  font-family:'Domine', serif;;
+  font-family:'Domine', serif;
   margin-top: 0;
+}
+
+span {
+  font-family:'Domine', serif;
 }
 /* --------------------------------- */
 

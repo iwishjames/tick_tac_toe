@@ -9,14 +9,15 @@
 </head>
 
 <body>
+  <!-- Have the option so that they can input what where they want for the Knots or the Cross. e.g. am Emoji.  -->
 
   <aside class=playerOneCard>
     <div class= "dogCelebration">
       <h2>Player 1</h2>
       <img class="playerOneAvatar" src="media/dog_dp.png" alt="dog celebrating win - animoji">
-      <h3>Point(s): 1</h3>
+      <h3>Point(s): <span class="playerOnePoints">0</span></h3>
       <p class="Life-line">Life-line:</p>
-      <button id=playerOneButton type="button" name="undo">Undo</button>
+      <button class=playerOneButton type="button" name="undo">Undo</button>
     </div>
     </aside>
 
@@ -52,9 +53,9 @@
 <div class= "catCelebration">
   <h2>Player 2</h2>
   <img class="playerTwoAvatar" src="media/cat_dp.png" alt="cat celebrating win - animoji">
-  <h3>Point(s): 0</h3>
+  <h3>Point(s): <span class="playerTwoPoints">0</span></h3>
   <p class="Life-line">Life-line:</p>
-  <button id=playerTwoButton type="button" name="undo">Undo</button>
+  <button class=playerTwoButton type="button" name="undo">Undo</button>
 </div>
 </aside>
 
@@ -63,5 +64,3 @@
 
 </body>
 </html>
-
-<!-- Have the option so that they can input what where they want for the Knots or the Cross. e.g. am Emoji.  -->

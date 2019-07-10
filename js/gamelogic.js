@@ -1,4 +1,7 @@
 //Make it also that the winning three is highlighted!
+//make play again button reset the board, but keep the scores.
+// Make undo button go back a turn.
+//with reset/tryagain button will be that if they win one and then they draw the next..it shouldn't reset the score!! all over again!
 
 const gameOutcomes = function (playerArray) {
  if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
@@ -31,6 +34,8 @@ let playLogger = [];
 // display O
 
 $(".playerTurn").text("Dog's turn."); //As player1 always goes first.
+player1Points = 0;
+player2Points = 0;
 
 $(".cell").click(function() {
     playLogger.push($(this).attr("id"));
@@ -42,11 +47,10 @@ $(".cell").click(function() {
            $(".playerOneAvatar").attr("src", "media/dog_winner.gif");
            $(".playerTwoAvatar").attr("src", "media/cat_loser.gif");
            $(".playerTurn").text("Dog is the Winner!")
-           $("#PlayerTwoButton").addClass("buttonActive");
+           $(".playerOneButton").addClass("buttonActive");
            $(".winnerMessage").text("Play Again");
-          //      change gif picture for winner.
-          //      make undo button active for player 2
-          //      get the winning value ids and have it displayed.
+           player1Points = player1Points + 1;
+           $(".playerOnePoints").text(player1Points);
         } else {
         $(".playerTurn").text("Cat's turn.");
         }
@@ -58,11 +62,11 @@ $(".cell").click(function() {
            $(".playerOneAvatar").attr("src", "media/dog_loser.gif");
            $(".playerTwoAvatar").attr("src", "media/cat_winner.gif");
            $(".playerTurn").text("Cat is the Winner!");
-           $("button").addClass("buttonActive");
+           $(".playerTwoButton").addClass("buttonActive");
            $(".winnerMessage").text("Play Again");
+           player2Points = player2Points + 1;
+           $(".playerTwoPoints").text(player2Points);
 
-        //      change gif picture for winner.
-        //      make undo button active for player 1
         } else {
         $(".playerTurn").text("Dog's turn.");
         }
