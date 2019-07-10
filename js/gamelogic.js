@@ -2,6 +2,11 @@
 //make play again button reset the board, but keep the scores.
 // Make undo button go back a turn.
 //with reset/tryagain button will be that if they win one and then they draw the next..it shouldn't reset the score!! all over again!
+//Easter EGG!! change character after three wins!
+//For a bit of a challenge and less code, try changing the visibility for the try again thing.
+//adjust the size of the emoji
+// include an instructions thing
+//change names to pupper and kitter(?).
 
 const gameOutcomes = function (playerArray) {
  if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
@@ -44,10 +49,10 @@ $(".cell").click(function() {
         $(this).text("🐶");
         $(this).off("click");
         if (gameOutcomes(player1Array) == true) {
-           $(".playerOneAvatar").attr("src", "media/dog_winner.gif");
-           $(".playerTwoAvatar").attr("src", "media/cat_loser.gif");
+           $(".playerOneAvatar").attr("src", "media/dog_win.gif");
+           $(".playerTwoAvatar").attr("src", "media/cat_lose.gif");
            $(".playerTurn").text("Dog is the Winner!")
-           $(".playerOneButton").addClass("buttonActive");
+           $(".playerTwoButton").addClass("buttonActive");
            $(".winnerMessage").text("Play Again");
            player1Points = player1Points + 1;
            $(".playerOnePoints").text(player1Points);
@@ -59,10 +64,10 @@ $(".cell").click(function() {
         $(this).text("🐱");
         $(this).off("click");
         if (gameOutcomes(player2Array) == true) {
-           $(".playerOneAvatar").attr("src", "media/dog_loser.gif");
-           $(".playerTwoAvatar").attr("src", "media/cat_winner.gif");
+           $(".playerOneAvatar").attr("src", "media/dog_lose.gif");
+           $(".playerTwoAvatar").attr("src", "media/cat_win.gif");
            $(".playerTurn").text("Cat is the Winner!");
-           $(".playerTwoButton").addClass("buttonActive");
+           $(".playerOneButton").addClass("buttonActive");
            $(".winnerMessage").text("Play Again");
            player2Points = player2Points + 1;
            $(".playerTwoPoints").text(player2Points);
