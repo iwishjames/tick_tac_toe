@@ -1,45 +1,24 @@
-//need to only check this when three moves have been made so that the final "else" wont show after just two moves!? I guess you can call on this after player1's turn the third time.
-
 //Make it also that the winning three is highlighted!
 
-// const gameOutcomes = function () {
-//   winner = false;
-//  if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
-//       (playerArray.includes("b1") && playerArray.includes("b2") && playerArray.includes("b3")) ||
-//       (playerArray.includes("c1") && playerArray.includes("c2") && playerArray.includes("c3")) ||
-//       (playerArray.includes("a1") && playerArray.includes("b1") && playerArray.includes("c1")) ||
-//       (playerArray.includes("a2") && playerArray.includes("b2") && playerArray.includes("c2")) ||
-//       (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) ||
-//       (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) ||
-//       (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1"))) {
-//
-//       return winner = true; //return True // have ti return something else here
-//
-//       }
-// };
+const gameOutcomes = function (playerArray) {
+ if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
+      (playerArray.includes("b1") && playerArray.includes("b2") && playerArray.includes("b3")) ||
+      (playerArray.includes("c1") && playerArray.includes("c2") && playerArray.includes("c3")) ||
+      (playerArray.includes("a1") && playerArray.includes("b1") && playerArray.includes("c1")) ||
+      (playerArray.includes("a2") && playerArray.includes("b2") && playerArray.includes("c2")) ||
+      (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) ||
+      (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) ||
+      (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1"))) {
+      $(".cell").off("click");
+      return true; //return True // have ti return something else here
+      }
+
+      //The Solution to get the colors highlighted would be to do a for lop of array with the winning combinations. that way you can return the winning combination from it.
+};
 
 let player1Array = [];
 let player2Array = [];
-
-
-// const gameWinner = function () {
-//   if (playRegister.length >= 5 && playRegister.length <= 9) {
-//     push player1 array into gameOutcomes //this goes first because Player 1 always has the first chance to win.
-//     if (outcome = true) {
-//       $(".cell").off("click");
-//       display button to play again, which resets the game.
-//
-//     } else {
-//         pop player1 array from gameOutcomes
-//         push player2 array into gameOutcomes{
-//         if (outcome = true) {
-//           $(".cell").off("click");
-//           display button to play again, which resets the game.
-//         } else {pop player2 array from gameOutcomes}
-// }
-// });
-
-// let playRegister = []; //used to log all the plays made and the length of the plays.
+let playLogger = [];
 
 // create a click event on the common class for all boxes
 // inside the event have if else {
@@ -51,58 +30,45 @@ let player2Array = [];
 // push this.id into the player2Arr
 // display O
 
-// playerClicked++ //
-
-// player1 array.length === 5 and player 2 array .length ===4 {
-// gameOutcomes(player1Array)
-//}
-
-$(".playerTurn").text("Player 1's turn."); //As player1 always goes first.
+$(".playerTurn").text("Dog's turn."); //As player1 always goes first.
 
 $(".cell").click(function() {
-    playRegister.push($(this).attr("id"));
+    playLogger.push($(this).attr("id"));
     if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd.
         player1Array.push($(this).attr("id"));
         $(this).text("🐶");
         $(this).off("click");
-        // if (gameOutcomes(player1Array) == true) {
-        //     $(".winnerMessage").text("Player 1 is the Winner!")
-        // } else {
-            $(".playerTurn").text("Player 2's turn.");
-        };
+        if (gameOutcomes(player1Array) == true) {
+           $(".playerOneAvatar").attr("src", "media/dog_winner.gif");
+           $(".playerTwoAvatar").attr("src", "media/cat_loser.gif");
+           $(".playerTurn").text("Dog is the Winner!")
+           $("#PlayerTwoButton").addClass("buttonActive");
+           $(".winnerMessage").text("Play Again");
+          //      change gif picture for winner.
+          //      make undo button active for player 2
+          //      get the winning value ids and have it displayed.
+        } else {
+        $(".playerTurn").text("Cat's turn.");
+        }
     } else {
         player2Array.push($(this).attr("id"));
         $(this).text("🐱");
         $(this).off("click");
-        gameOutcomes(player2Array);
-        // if (gameOutcomes(player2Array) == true) {
-        //    $(".winnerMessage").text("Player 2 is the Winner!")
+        if (gameOutcomes(player2Array) == true) {
+           $(".playerOneAvatar").attr("src", "media/dog_loser.gif");
+           $(".playerTwoAvatar").attr("src", "media/cat_winner.gif");
+           $(".playerTurn").text("Cat is the Winner!");
+           $("button").addClass("buttonActive");
+           $(".winnerMessage").text("Play Again");
+
+        //      change gif picture for winner.
+        //      make undo button active for player 1
         } else {
-          $(".playerTurn").text("Player 1's turn.");
-        };
-    };
-
-
-// OPTIMISATION for below WOULD BE TO JUST CALL the gameOutcomes on WHO EVER's TURN IT IS.
-/////////////////////////
-
-// //
-// if (playRegister.length >= 5 && playRegister.length <= 9) {
-//     push player1 array into gameOutcomes //this goes first because Player 1 always has the first chance to win.
-//     if (outcome = true) {
-//       $(".winnerMessage").text("Player 1 is the Winner!");
-//       $(".cell").off("click");
-//       display button to play again, which resets the game.
-//
-//     } else {
-//         pop player1 array from gameOutcomes
-//         push player2 array into gameOutcomes{
-//         if (outcome = true) {
-//           $(".winnerMessage").text("Player 2 is the Winner!");
-//           $(".cell").off("click");
-//           display button to play again, which resets the game.
-//         } else {pop player2 array from gameOutcomes}
-// }
-// });
-
-///////////////////////////
+        $(".playerTurn").text("Dog's turn.");
+        }
+      }
+      if (playLogger.length === 9 && gameOutcomes(player1Array) !== true) {
+        $(".playerTurn").text("It's a Draw!")
+        $(".winnerMessage").text("Play Again")
+      }
+    });
