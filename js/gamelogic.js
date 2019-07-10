@@ -18,22 +18,10 @@
 
 let player1Array = [];
 let player2Array = [];
-//playerClicked = 0;
 
 // create a click event on the common class for all boxes
-let clickEvent = $(".cell").click(function() {
-  if ((player1Array.length - player2Array.length) === 0 ) {
-    player1Array.push($(this).attr("id"));
-    //AJ: have to make sure that the push isn't done twice into the array. so that one array contains A1 and A1 twice for eg. 
-    alert("🐶");
-  } else {
-    player2Array.push($(this).attr("id"));
-    alert("🐱");
-  }
-});
-
 // inside the event have if else {
-// check playerClicked is even - if yes then
+// check playerClicked is even - if yes then // I made it that it checks for even in the if function itself.
 // push this.id into the player1Arr
 //player1Array.push($(this).attr("id"));
 // display X
@@ -41,11 +29,27 @@ let clickEvent = $(".cell").click(function() {
 // push this.id into the player2Arr
 // display O
 
-// playerClicked++
+// playerClicked++ //
 
 // player1 array.length === 5 and player 2 array .length ===4 {
 // gameOutcomes(player1Array)
 //}
+$(".playerTurn").text("Player 1's turn."); //As player1 always goes first.
+
+$(".cell").click(function() {
+    if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd.
+        player1Array.push($(this).attr("id"));
+        //AJ: have to make sure that the push isn't done twice into the array. so that one array contains A1 and A1 twice for eg.
+        $(this).text("🐶");
+        $(this).off("click");
+        $(".playerTurn").text("Player 2's turn.");
+    } else {
+        player2Array.push($(this).attr("id"));
+        $(this).text("🐱");
+        $(this).off("click");
+        $(".playerTurn").text("Player 1's turn.");
+    }
+});
 
 
 
