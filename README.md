@@ -1,9 +1,8 @@
 In atom you can check how it looks by using the preview. Control Shift M aka Packages/Markdown review
-
+h1 PRo
 
 # Project 0: Tick Tac Toe
-
-This is a simple game
+This is a simple game with a twist! the ability to undo the other player's move!
 
 ## features
 
@@ -20,7 +19,7 @@ it has lasers
 
 ## SPECIAL Thanks!!!
 -  @gopipatell GOPI!! - IDEAS
-- @ MEE!! - JS Legend!!
+- @ MEE!! - JS Legend!! https://ratsamee.github.io/tictactoe/
 - @Rashida!
 
 the most important thing your readme file should include! a link to the live demo of your project (the github.io version)

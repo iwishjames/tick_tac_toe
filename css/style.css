@@ -124,7 +124,7 @@ span {
 }
 /* --------------------------------- */
 
-.winnerMessage {
+.playAgainMessage {
   color: white;
   background-color: #32dbc6;
   margin-top: 15px;
@@ -132,7 +132,7 @@ span {
   border-radius: 3px;
 }
 
-.winnerMessage:hover {
+.playAgainMessage:hover {
   background-color: #239c8d;
 }
 
