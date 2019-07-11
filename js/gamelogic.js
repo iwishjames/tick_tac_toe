@@ -12,22 +12,74 @@
 
 $(document).ready(function () {
 
-// const possibleOutcomes [["a1","a2","a3"]
-// }
+const possibleOutcomes = [
+  ["a1","a2","a3"],
+  ["b1","b2","b3"],
+  ["c1","c2","c3"],
+  ["a1","b1","c1"],
+  ["a2","b2","c2"],
+  ["c1","c2","c3"],
+  ["a1","b2","c3"],
+  ["a3","b2","c1"],
+];
 
+//////// Need to shorten to create a loop!!!
+// let gameOutcomes = function (playerArray) {
+// for (let i = 0; i < possibleOutcomes.length; i++) {
+// if ([i].includes(playerArray) {
+//   $('.cell').off('click');
+//
+//   return true;
+// }
+// };
+
+// const gameOutcomes = function (playerArray) {
+//  if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
+//       (playerArray.includes("b1") && playerArray.includes("b2") && playerArray.includes("b3")) ||
+//       (playerArray.includes("c1") && playerArray.includes("c2") && playerArray.includes("c3")) ||
+//       (playerArray.includes("a1") && playerArray.includes("b1") && playerArray.includes("c1")) ||
+//       (playerArray.includes("a2") && playerArray.includes("b2") && playerArray.includes("c2")) ||
+//       (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) ||
+//       (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) ||
+//       (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1"))) {
+//       $('.cell').off('click');
+//       return true; //return True // have ti return something else here
+//       }
+//////////////
 
 const gameOutcomes = function (playerArray) {
- if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
-      (playerArray.includes("b1") && playerArray.includes("b2") && playerArray.includes("b3")) ||
-      (playerArray.includes("c1") && playerArray.includes("c2") && playerArray.includes("c3")) ||
-      (playerArray.includes("a1") && playerArray.includes("b1") && playerArray.includes("c1")) ||
-      (playerArray.includes("a2") && playerArray.includes("b2") && playerArray.includes("c2")) ||
-      (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) ||
-      (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) ||
-      (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1"))) {
-      $('.cell').off('click');
-      return true; //return True // have ti return something else here
-      }
+ if (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) {
+    $(".a1, .a2, .a3").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("b1") && playerArray.includes("b2") && playerArray.includes("b3")) {
+    $(".b1, .b2, .b3").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("c1") && playerArray.includes("c2") && playerArray.includes("c3")) {
+    $(".c1, .c2, .c3").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("a1") && playerArray.includes("b1") && playerArray.includes("c1")) {
+    $(".a1, .b1, .c1").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("a2") && playerArray.includes("b2") && playerArray.includes("c2")) {
+    $(".a2, .b2, .c2").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) {
+    $(".a3, .b3, .c3").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) {
+    $(".a1, .b2, .c3").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
+  if (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1")) {
+    $(".a3, .b2, .c1").addClass("cellWinners");
+    $('.cell').off('click');
+    return true;}
 
       //The Solution to get the colors highlighted would be to do a for lop of array with the winning combinations. that way you can return the winning combination from it.
 };
@@ -35,17 +87,6 @@ const gameOutcomes = function (playerArray) {
 let player1Array = [];
 let player2Array = [];
 let playLogger = [];
-
-//Rashida Notes//
-// create a click event on the common class for all boxes
-// inside the event have if else {
-// check playerClicked is even - if yes then // I made it that it checks for even in the if function itself.
-// push this.id into the player1Arr
-//player1Array.push($(this).attr("id"));
-// display X
-// else
-// push this.id into the player2Arr
-// display O
 
 let player1 = {
   name: 'Doggo',
@@ -80,13 +121,25 @@ let egg = {
   undoStatement: "You have used Undo! Chick Lé's turn.",
 };
 
-alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- If a Player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- Score 3 points first to unlock an Easter Egg! \r\ \r\Good Luck and Have Fun! :)");
+alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- If a player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- First player to score 3 points unlocks an Easter Egg! \r\ \r\Good Luck and Have Fun!! :)");
+
 $(".playerTurn").text(player1.turn); //As player 1 always goes first.
 $(".playAgainMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
 $(".player1CardName").text(player1.name);
 $(".player2CardName").text(player2.name);
 let player1Points = 0;
 let player2Points = 0;
+
+//Rashida Notes//
+// create a click event on the common class for all boxes
+// inside the event have if else {
+// check playerClicked is even - if yes then // I made it that it checks for even in the if function itself.
+// push this.id into the player1Arr
+//player1Array.push($(this).attr("id"));
+// display X
+// else
+// push this.id into the player2Arr
+// display O
 
 const playGame = function () {
       playLogger.push($(this).attr("id"));
@@ -136,6 +189,8 @@ const playGame = function () {
 
 $(".cell").on('click', playGame);
 
+
+
 //Rashida Guide:
     // $(.cell).on('click', playGame);
     //
@@ -166,6 +221,7 @@ $(".playAgainMessage").click(function () {
   $(".playerTurn").text(player1.turn);
   $(".cell").text("");
   $('.cell').on('click', playGame);
+  $(".cell").removeClass("cellWinners"); //remove the highlight of the winning cells
   player1Array = [];
   player2Array = [];
   playLogger = [];

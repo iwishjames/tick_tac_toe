@@ -27,7 +27,7 @@ the most important thing your readme file should include! a link to the live dem
 
 ## Challenges and Fixes
 - Try again button. instead of repeating (DRY!!) just changed the original html and made it visible and tryAgainVisible by changing it at the CSS level. Allowed to remove extra css rule just for it.
-- Easter EGG - ensuring it is only available after three points and once it has been unlocked, not available to the other character. 
+- Easter EGG - ensuring it is only available after three points and once it has been unlocked, not available to the other character.
 
 
 
@@ -44,6 +44,8 @@ the most important thing your readme file should include! a link to the live dem
 - Even something as simple as tic tac toe, which is easy asf IRL can require some thinking when replicating it virtually!
 - debugging using alert on each line or debugger;
 - "Google is your best friend!" - Rashida Bangali 2019.
+- There might be a slight difference in display when viewing the site from your machine and from where you host it.
+- files with large sizes (especially high quality gifs!!!!) will take time to load on a webpage. 
 - if you need to repeat yourself - use loops!
 - best to have the basics done and have a skeleton before going after the big features.
 
