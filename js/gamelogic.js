@@ -1,6 +1,4 @@
 //Make it also that the winning three is highlighted!
-//make play again button reset the board, but keep the scores.
-//with reset/tryagain button will be that if they win one and then they draw the next..it shouldn't reset the score!! all over again!
 // Make undo button go back a turn. - When you gain a point, the other player gets a handicap/advantage for the next game so that they can undo a play from the other person.
 //Get Joel's voice for the game - for win - it is like sarcastic yeah will done! for draw it is excited well done it is a drawn - or maybe pathetic!
 //Easter EGG!! change character after three wins!
@@ -110,7 +108,7 @@ $(".cell").on('click', playGame);
     // inside reset: $(.cell).on('click');
 
 
-///// Resetting the gameboard to play again /////////
+///// RESETTING the gameboard to play again /////////
 $(".winnerMessage").click(function () {
   $(".playerTurn").text("Doggo's turn.");
   $(".cell").text("");
@@ -121,14 +119,70 @@ $(".winnerMessage").click(function () {
   $(".playerOneAvatar").attr("src", "media/dog_placeholder2.gif");
   $(".playerTwoAvatar").attr("src", "media/cat_placeholder2.gif");
   $(".winnerMessage").css("visibility", "hidden");
+  $(".playerOneButton").attr("disabled", false);
+  $(".playerTwoButton").attr("disabled", false);
 });
-//
-// $(".playerOneButton").click(function () { //reverse last two plays.
-//
-//
+
+
+///// UNDO BUTTON FUNCTIONALITY!!! //////////
+$(".playerOneButton").click(function () { //reverse last two plays.
+let isEven = (player1Array.length - player2Array.length) === 0;
+if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
+  player2Array.pop();
+  player1Array.pop(); //from these two, I am removing all the background data.
+  let retract1 = playLogger[(playLogger.length - 1)]; // player 2 last move.
+  let retract2 = playLogger[(playLogger.length - 2)]; //player 1's last move. using these two to get the values of the things I need to remove.
+  playLogger.splice(-2, 2); // removing the background data.
+  // playLogger.pop();
+  // playLogger.pop();
+  $(`#${retract1}`).text("");
+  $(`#${retract2}`).text("");
+  $(".playerTurn").text("Doggo's used Undo!");
+  $(".playerOneButton").attr("disabled", true);
+  $(".playerOneButton").removeClass("buttonActive");
+  $(`.${retract1}`).on('click', playGame);
+  $(`.${retract2}`).on('click', playGame);
+} else if (isEven === true && playLogger.length < 2) {
+  alert('Not enough plays! Please wait until your next turn.');
+} else {
+  alert('Please wait for your turn before using your life-line!');
+  }
+});
+
+//BUTTON 2??
+$(".playerTwoButton").click(function () { //reverse last two plays.
+let isOdd = (player1Array.length - player2Array.length) === 1;
+if (isOdd === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
+  player1Array.pop();
+  player2Array.pop(); //from these two, I am removing all the background data.
+  let retract1 = playLogger[(playLogger.length - 1)]; // player 1 last move.
+  let retract2 = playLogger[(playLogger.length - 2)]; //player 2's last move. using these two to get the values of the things I need to remove.
+  playLogger.splice(-2, 2); // removing the background data.
+  // playLogger.pop();
+  // playLogger.pop();
+  $(`#${retract1}`).text("");
+  $(`#${retract2}`).text("");
+  $(".playerTurn").text("Meowmer's used Undo!");
+  $(".playerTwoButton").attr("disabled", true);
+  $(".playerTwoButton").removeClass("buttonActive");
+  $(`.${retract1}`).on('click', playGame);
+  $(`.${retract2}`).on('click', playGame);
+} else if (isOdd === true && playLogger.length < 2) {
+  alert('Not enough plays! Please wait until your next turn.');
+} else {
+  alert('Please wait for your turn before using your life-line!');
+  }
+});
+
 // $(".playerTwoButton").click(function () { // reverse last two playerOnePoints
 // // $(".undoButtton@>@K@K@").click(function () {
 // //
 // });
+
+
+// if points = 3
+// change name (make it a span with a class) to egg.
+// Change image to egg.
+// change all values of dog in the function to egg?
 
 }); //this closes off the document.ready at the top! don't remove!!!

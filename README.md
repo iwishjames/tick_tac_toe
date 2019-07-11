@@ -18,14 +18,17 @@ it has lasers
 - also uses funtext to make
 
 
-## Thank you
--  
+## SPECIAL Thanks!!!
+-  @gopipatell GOPI!! - IDEAS
+- @ MEE!! - JS Legend!!
+- @Rashida!
 
 the most important thing your readme file should include! a link to the live demo of your project (the github.io version)
 
 
 ## Challenges and Fixes
 - Try again button. instead of repeating (DRY!!) just changed the original html and made it visible and tryAgainVisible by changing it at the CSS level. Allowed to remove extra css rule just for it.
+
 
 
 ## Game engagement points
@@ -43,3 +46,5 @@ the most important thing your readme file should include! a link to the live dem
 - "Google is your best friend!" - Rashida Bangali 2019.
 - if you need to repeat yourself - use loops!
 - best to have the basics done and have a skeleton before going after the big features.
+
+## Ideas I didn't get to implement.
