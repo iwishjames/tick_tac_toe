@@ -80,6 +80,7 @@ let egg = {
   undoStatement: "You have used Undo! Chick Lé's turn.",
 };
 
+alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- If a Player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- Score 3 points first to unlock an Easter Egg! \r\ \r\Good Luck and Have Fun! :)");
 $(".playerTurn").text(player1.turn); //As player 1 always goes first.
 $(".playAgainMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
 $(".player1CardName").text(player1.name);
