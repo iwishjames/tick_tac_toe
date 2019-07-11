@@ -80,7 +80,7 @@ main {
   border-radius: 10px;
 }
 
-.cell:hover{
+.hover:hover{
   background: #ff6768;
 }
 

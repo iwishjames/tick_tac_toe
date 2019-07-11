@@ -148,6 +148,7 @@ const playGame = function () {
         $(this).text(player1.symbol);
         $(this).off('click');
             if (gameOutcomes(player1Array) == true) {
+               $('.cell').removeClass('hover');
                $(".playerOneAvatar").attr("src", player1.mediaWin);
                $(".playerTwoAvatar").attr("src", player2.mediaLose);
                $(".playerTurn").text(player1.winStatement);
@@ -222,7 +223,8 @@ $(".playAgainMessage").click(function () {
   $(".cell").text("");
   $('.cell').on('click', playGame);
   $(".cell").removeClass("cellWinners"); //remove the highlight of the winning cells
-  player1Array = [];
+  $('.cell').addClass('hover'); //adding back hover effect
+  player1Array = []; //clearing up arrays to start afresh!
   player2Array = [];
   playLogger = [];
   $(".playerOneAvatar").attr("src", player1.mediaPh);
