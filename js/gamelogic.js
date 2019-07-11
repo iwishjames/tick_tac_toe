@@ -1,12 +1,20 @@
 //Make it also that the winning three is highlighted!
 //make play again button reset the board, but keep the scores.
-// Make undo button go back a turn.
 //with reset/tryagain button will be that if they win one and then they draw the next..it shouldn't reset the score!! all over again!
+// Make undo button go back a turn. - When you gain a point, the other player gets a handicap/advantage for the next game so that they can undo a play from the other person.
+//Get Joel's voice for the game - for win - it is like sarcastic yeah will done! for draw it is excited well done it is a drawn - or maybe pathetic!
 //Easter EGG!! change character after three wins!
-//For a bit of a challenge and less code, try changing the visibility for the try again thing.
-//adjust the size of the emoji
 // include an instructions thing
-//change names to pupper and kitter(?).
+// do the readme!
+//clear the borders in the middle to create a clean ticktactoe line.
+//could make the initial commands for the game as a function and use it for the reset button!?
+//animate the table reset that that the try again button covers the board and closes up the at the top.
+//easter EGG character's  name is chick lé or eggo and they get a special glow or color/gradient/rainbow for their name as well!
+//give character to each character. Cat is more Idk attitude.
+// give ability to insert your own name or character!
+
+$(document).ready(function () {
+
 
 const gameOutcomes = function (playerArray) {
  if ( (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) ||
@@ -17,7 +25,8 @@ const gameOutcomes = function (playerArray) {
       (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) ||
       (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) ||
       (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1"))) {
-      $(".cell").off("click");
+      // $("div").off("click");
+      $('.cell').off('click');
       return true; //return True // have ti return something else here
       }
 
@@ -38,46 +47,88 @@ let playLogger = [];
 // push this.id into the player2Arr
 // display O
 
-$(".playerTurn").text("Dog's turn."); //As player1 always goes first.
-player1Points = 0;
-player2Points = 0;
+$(".playerTurn").text("Doggo's turn."); //As player1 always goes first.
+$(".winnerMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
+//could make the above a function and use it for the reset button!?
 
-$(".cell").click(function() {
-    playLogger.push($(this).attr("id"));
-    if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd.
+
+let player1Points = 0;
+let player2Points = 0;
+
+const playGame = function () {
+      playLogger.push($(this).attr("id"));
+      if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd.
         player1Array.push($(this).attr("id"));
         $(this).text("🐶");
-        $(this).off("click");
-        if (gameOutcomes(player1Array) == true) {
-           $(".playerOneAvatar").attr("src", "media/dog_win.gif");
-           $(".playerTwoAvatar").attr("src", "media/cat_lose.gif");
-           $(".playerTurn").text("Dog is the Winner!")
-           $(".playerTwoButton").addClass("buttonActive");
-           $(".winnerMessage").text("Play Again");
-           player1Points = player1Points + 1;
-           $(".playerOnePoints").text(player1Points);
-        } else {
-        $(".playerTurn").text("Cat's turn.");
-        }
-    } else {
+        $(this).off('click');
+            if (gameOutcomes(player1Array) == true) {
+               $(".playerOneAvatar").attr("src", "media/dog_win.gif");
+               $(".playerTwoAvatar").attr("src", "media/cat_lose.gif");
+               $(".playerTurn").text("Doggo is the Winner!");
+               $(".playerTwoButton").addClass("buttonActive");
+               $(".winnerMessage").css("visibility", "visible");
+               player1Points = player1Points + 1;
+               $(".playerOnePoints").text(player1Points);
+            } else {
+            $(".playerTurn").text("Meowmer's turn.");
+            }
+
+      } else { //
         player2Array.push($(this).attr("id"));
         $(this).text("🐱");
-        $(this).off("click");
-        if (gameOutcomes(player2Array) == true) {
-           $(".playerOneAvatar").attr("src", "media/dog_lose.gif");
-           $(".playerTwoAvatar").attr("src", "media/cat_win.gif");
-           $(".playerTurn").text("Cat is the Winner!");
-           $(".playerOneButton").addClass("buttonActive");
-           $(".winnerMessage").text("Play Again");
-           player2Points = player2Points + 1;
-           $(".playerTwoPoints").text(player2Points);
+        $(this).off('click');
+            if (gameOutcomes(player2Array) == true) {
+               $(".playerOneAvatar").attr("src", "media/dog_lose.gif");
+               $(".playerTwoAvatar").attr("src", "media/cat_win.gif");
+               $(".playerTurn").text("Meowmer is the Winner!");
+               $(".playerOneButton").addClass("buttonActive");
+               $(".winnerMessage").css("visibility", "visible");
+               player2Points = player2Points + 1;
+               $(".playerTwoPoints").text(player2Points);
+            } else {
+              $(".playerTurn").text("Doggo's turn.");
+            }
+          }
+    if (playLogger.length === 9 && gameOutcomes(player1Array) !== true) {
+      $(".playerTurn").text("It's a Draw!");
+      $(".winnerMessage").css("visibility", "visible");
+      $(".playerTwoAvatar").attr("src", "media/dog_win.gif");
+      $(".playerTwoAvatar").attr("src", "media/cat_win.gif");
+    }
+};
 
-        } else {
-        $(".playerTurn").text("Dog's turn.");
-        }
-      }
-      if (playLogger.length === 9 && gameOutcomes(player1Array) !== true) {
-        $(".playerTurn").text("It's a Draw!")
-        $(".winnerMessage").text("Play Again")
-      }
-    });
+$(".cell").on('click', playGame);
+
+    // $(.cell).on('click', playGame);
+    //
+    // const playGame = function () {
+    //
+    // };
+    //
+    // $(.cell).off('click');
+
+    // inside reset: $(.cell).on('click');
+
+
+///// Resetting the gameboard to play again /////////
+$(".winnerMessage").click(function () {
+  $(".playerTurn").text("Doggo's turn.");
+  $(".cell").text("");
+  $('.cell').on('click', playGame);
+  player1Array = [];
+  player2Array = [];
+  playLogger = [];
+  $(".playerOneAvatar").attr("src", "media/dog_placeholder2.gif");
+  $(".playerTwoAvatar").attr("src", "media/cat_placeholder2.gif");
+  $(".winnerMessage").css("visibility", "hidden");
+});
+//
+// $(".playerOneButton").click(function () { //reverse last two plays.
+//
+//
+// $(".playerTwoButton").click(function () { // reverse last two playerOnePoints
+// // $(".undoButtton@>@K@K@").click(function () {
+// //
+// });
+
+}); //this closes off the document.ready at the top! don't remove!!!
