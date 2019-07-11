@@ -27,6 +27,7 @@ the most important thing your readme file should include! a link to the live dem
 
 ## Challenges and Fixes
 - Try again button. instead of repeating (DRY!!) just changed the original html and made it visible and tryAgainVisible by changing it at the CSS level. Allowed to remove extra css rule just for it.
+- Easter EGG - ensuring it is only available after three points and once it has been unlocked, not available to the other character. 
 
 
 

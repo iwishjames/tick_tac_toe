@@ -25,7 +25,6 @@ const gameOutcomes = function (playerArray) {
       (playerArray.includes("a3") && playerArray.includes("b3") && playerArray.includes("c3")) ||
       (playerArray.includes("a1") && playerArray.includes("b2") && playerArray.includes("c3")) ||
       (playerArray.includes("a3") && playerArray.includes("b2") && playerArray.includes("c1"))) {
-      // $("div").off("click");
       $('.cell').off('click');
       return true; //return True // have ti return something else here
       }
@@ -37,6 +36,7 @@ let player1Array = [];
 let player2Array = [];
 let playLogger = [];
 
+//Rashida Notes//
 // create a click event on the common class for all boxes
 // inside the event have if else {
 // check playerClicked is even - if yes then // I made it that it checks for even in the if function itself.
@@ -55,7 +55,7 @@ let player1 = {
   mediaLose: 'media/dog_lose.gif',
   turn: "Doggo's turn.",
   winStatement: "Doggo is the Winner!",
-  undoStatement: "Doggo's used Undo!",
+  undoStatement: "You have used Undo! Doggo's turn.",
 };
 
 let player2 = {
@@ -66,7 +66,7 @@ let player2 = {
   mediaLose: 'media/cat_lose.gif',
   turn: "Meowmer's turn.",
   winStatement: "Meowmer is the Winner!",
-  undoStatement: "Meowmer's used Undo!",
+  undoStatement: "You have used Undo! Meowmer's turn.",
 };
 
 let egg = {
@@ -77,17 +77,15 @@ let egg = {
   mediaLose: 'media/egg_lose.gif',
   turn: "Chick Lé's turn.",
   winStatement: "Chick Lé is the Winner!",
-  undoStatement: "Chick Lé's used Undo!",
+  undoStatement: "You have used Undo! Chick Lé's turn.",
 };
 
-$(".playerTurn").text(player1.turn); //As player1 always goes first.
+$(".playerTurn").text(player1.turn); //As player 1 always goes first.
 $(".playAgainMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
-//could make the above a function and use it for the reset button!?
 $(".player1CardName").text(player1.name);
 $(".player2CardName").text(player2.name);
 let player1Points = 0;
 let player2Points = 0;
-let gamesCount = [];
 
 const playGame = function () {
       playLogger.push($(this).attr("id"));
@@ -109,7 +107,7 @@ const playGame = function () {
             $(".playerTurn").text(player2.turn);
             }
 
-      } else { //
+      } else {
         player2Array.push($(this).attr("id"));
         $(this).text(player2.symbol);
         $(this).off('click');
@@ -179,11 +177,16 @@ $(".playAgainMessage").click(function () {
     player1 = egg;
     $(".player1CardName").text(player1.name);
     $(".playerOneAvatar").attr("src", player1.mediaPh);
+    $(".playerTurn").text(player1.turn);
+    $(".player1CardName").addClass("playerColorActive");
+
     }
   if (player2Points >= 3 && player1 !== egg) {//if player2 reaches three points first, then he turns into Egg.
     player2 = egg;
     $(".player2CardName").text(player2.name);
     $(".playerTwoAvatar").attr("src", player2.mediaPh);
+    $(".playerTurn").text(player1.turn);
+    $(".player2CardName").addClass("playerColorActive");
   }
 });
 
@@ -204,14 +207,14 @@ if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it 
   $(".playerOneButton").removeClass("buttonActive");
   $(`.${retract1}`).on('click', playGame);
   $(`.${retract2}`).on('click', playGame);
-} else if (playLogger.length === 0) {
-  alert('Not enough plays! Try again once your opponent has made a play.');
+} else if (playLogger.length <= 2) {
+  alert('Not enough plays! Try again once your opponent has had another move.');
 } else {
   alert('Please wait for your turn before using your life-line!');
   }
 });
 
-//BUTTON 2??
+//BUTTON 2 ///
 $(".playerTwoButton").click(function () { //reverse last two plays.
 let isOdd = (player1Array.length - player2Array.length) === 1;
 if (isOdd === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
@@ -227,8 +230,8 @@ if (isOdd === true && playLogger.length >= 2) { //if value is even. ensures it i
   $(".playerTwoButton").removeClass("buttonActive");
   $(`.${retract1}`).on('click', playGame);
   $(`.${retract2}`).on('click', playGame);
-} else if (playLogger.length === 0) {
-  alert('Not enough plays! Try again once your opponent has made a play.');
+} else if (playLogger.length === 1) {
+  alert('Not enough plays! Try again once your opponent has had another move.');
 } else {
   alert('Please wait for your turn before using your life-line!');
   }
