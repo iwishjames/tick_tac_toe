@@ -1,27 +1,15 @@
-//Make it also that the winning three is highlighted!
-// Make undo button go back a turn. - When you gain a point, the other player gets a handicap/advantage for the next game so that they can undo a play from the other person.
-//Get Joel's voice for the game - for win - it is like sarcastic yeah will done! for draw it is excited well done it is a drawn - or maybe pathetic!
-//Easter EGG!! change character after three wins!
-// include an instructions thing
-// do the readme!
-//clear the borders in the middle to create a clean ticktactoe line.
-//animate the table reset that that the try again button covers the board and closes up the at the top.
-//easter EGG character's  name is chick lé or eggo and they get a special glow or color/gradient/rainbow for their name as well!
-//give character to each character. Cat is more Idc attitude.
-// give ability to insert your own name or character!
-
 $(document).ready(function () {
-
-const possibleOutcomes = [
-  ["a1","a2","a3"],
-  ["b1","b2","b3"],
-  ["c1","c2","c3"],
-  ["a1","b1","c1"],
-  ["a2","b2","c2"],
-  ["c1","c2","c3"],
-  ["a1","b2","c3"],
-  ["a3","b2","c1"],
-];
+//
+// const possibleOutcomes = [
+//   ["a1","a2","a3"],
+//   ["b1","b2","b3"],
+//   ["c1","c2","c3"],
+//   ["a1","b1","c1"],
+//   ["a2","b2","c2"],
+//   ["c1","c2","c3"],
+//   ["a1","b2","c3"],
+//   ["a3","b2","c1"],
+// ];
 
 //////// Need to shorten to create a loop!!!
 // let gameOutcomes = function (playerArray) {
@@ -47,6 +35,8 @@ const possibleOutcomes = [
 //       }
 //////////////
 
+
+// Checking to see if it matches possible win strategies.
 const gameOutcomes = function (playerArray) {
  if (playerArray.includes("a1") && playerArray.includes("a2") && playerArray.includes("a3")) {
     $(".a1, .a2, .a3").addClass("cellWinners");
@@ -84,10 +74,14 @@ const gameOutcomes = function (playerArray) {
       //The Solution to get the colors highlighted would be to do a for lop of array with the winning combinations. that way you can return the winning combination from it.
 };
 
+
+// Arrays that hold each player's specific moves and a general logger of every move since game inception.
 let player1Array = [];
 let player2Array = [];
 let playLogger = [];
 
+
+// Available Characters incl. Easter Egg. and their respective requirments.
 let player1 = {
   name: 'Doggo',
   symbol: '🐶',
@@ -120,14 +114,17 @@ let egg = {
   winStatement: "Chick Lé is the Winner!",
   undoStatement: "You have used Undo! Chick Lé's turn.",
 };
+//Much easier to make changes to the game by first have the characters and their interactions broken down.
 
+
+// Intro to game with Alert.
 alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- If a player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- First player to score 3 points unlocks an Easter Egg! \r\ \r\Good Luck and Have Fun!! :)");
 
 $(".playerTurn").text(player1.turn); //As player 1 always goes first.
 $(".playAgainMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
 $(".player1CardName").text(player1.name);
 $(".player2CardName").text(player2.name);
-let player1Points = 0;
+let player1Points = 0; //Everyone starts with Zero points first!
 let player2Points = 0;
 
 //Rashida Notes//
@@ -141,10 +138,12 @@ let player2Points = 0;
 // push this.id into the player2Arr
 // display O
 
+
+// Function to check moves against the winning strategy based on whether it is player1 (even) or player2 (odd)
 const playGame = function () {
       playLogger.push($(this).attr("id"));
-      if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd.
-        player1Array.push($(this).attr("id"));
+      if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd. Saved a couple of lines of code here. Creating the objects of the characters really helps here!
+        player1Array.push($(this).attr("id")); //This pushes the specific id of the div into the array for
         $(this).text(player1.symbol);
         $(this).off('click');
             if (gameOutcomes(player1Array) == true) {
@@ -162,7 +161,7 @@ const playGame = function () {
             $(".playerTurn").text(player2.turn);
             }
 
-      } else {
+      } else { //if it is not even. it is odd. so push to player 2's array.
         player2Array.push($(this).attr("id"));
         $(this).text(player2.symbol);
         $(this).off('click');
@@ -191,7 +190,6 @@ const playGame = function () {
 $(".cell").on('click', playGame);
 
 
-
 //Rashida Guide:
     // $(.cell).on('click', playGame);
     //
@@ -217,7 +215,7 @@ $(".cell").on('click', playGame);
 // change all values of dog in the function to egg?
 
 
-///// RESETTING the gameboard to play again /////////
+// RESETTING the gameboard to play again
 $(".playAgainMessage").click(function () {
   $(".playerTurn").text(player1.turn);
   $(".cell").text("");
@@ -250,7 +248,7 @@ $(".playAgainMessage").click(function () {
 });
 
 
-///// UNDO BUTTON FUNCTIONALITY!!! //////////
+// Player 1 UNDO button functionality!!!
 $(".playerOneButton").click(function () { //reverse last two plays.
 let isEven = (player1Array.length - player2Array.length) === 0;
 if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
@@ -273,7 +271,7 @@ if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it 
   }
 });
 
-//BUTTON 2 ///
+//Player 2 Undo button feature.
 $(".playerTwoButton").click(function () { //reverse last two plays.
 let isOdd = (player1Array.length - player2Array.length) === 1;
 if (isOdd === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.

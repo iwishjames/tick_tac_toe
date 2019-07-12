@@ -30,11 +30,11 @@ margin: 0 auto;
   margin: 120px 0 0 15px;
 }
 
-.Life-line {
-  text-decoration: underline;
+/* .Life-line {
+  text-decoration: overline;
   text-decoration-style: wavy;
   text-decoration-color: #32dbc6;
-}
+} */
 
 button {
   background-color: white;
@@ -170,3 +170,18 @@ background: -webkit-linear-gradient(#8A2387, #E94057, #F27121);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+/* Might save this for later if I end up creating an instructions button.  */
+/* .instructions {
+  color: white;
+  background-color: #F27121;
+  position: fixed;
+  bottom: 615px;
+  right: 93px;
+  border-color: #8A2387;
+  margin: 0;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+} */
