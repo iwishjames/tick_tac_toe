@@ -118,7 +118,7 @@ let egg = {
 
 
 // Intro to game with Alert.
-alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- If a player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- First player to score 3 points unlocks an Easter Egg! \r\ \r\Good Luck and Have Fun!! :)");
+alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- Life-line: If a player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- First player to score 3 points unlocks an Easter Egg! \r\ \r\Good Luck and Have Fun!! :)");
 
 $(".playerTurn").text(player1.turn); //As player 1 always goes first.
 $(".playAgainMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
