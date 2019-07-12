@@ -253,7 +253,7 @@ $(".playerOneButton").click(function () { //reverse last two plays.
 let isEven = (player1Array.length - player2Array.length) === 0;
 if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
   player2Array.pop();
-  player1Array.pop(); //from these two, I am removing all the background data.
+  player1Array.pop(); //from these two,removing all the background data.
   let retract1 = playLogger[(playLogger.length - 1)]; // player 2 last move.
   let retract2 = playLogger[(playLogger.length - 2)]; //player 1's last move. using these two to get the values of the things I need to remove.
   playLogger.splice(-2, 2); // removing the background data.

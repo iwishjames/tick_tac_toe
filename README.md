@@ -40,7 +40,7 @@ Check out her Project0 here: https://ratsamee.github.io/tictactoe/
 
 - [@meowsosoaka](https://github.com/meowsoso?tab=repositories) aka Meo! - Importance of testing with users. Thanks for you feedback on the user experience!
 You can check out his tic-tac-toe here: https://meowsoso.github.io/turbo-sniffle/
-But even better, check out his Puzzle/Mystery game: https://meowsoso.github.io/Robot_run/
+But even better, check out his puzzle/mystery game: https://meowsoso.github.io/Robot_run/
 
 ----
 
