@@ -118,7 +118,7 @@ let egg = {
 
 
 // Intro to game with Alert.
-alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- Life-line: If a player wins a point, the opposing player gets the ability to 'undo' a move in the next round. \r\ \r\- First player to score 3 points unlocks an Easter Egg! \r\ \r\Good Luck and Have Fun!! :)");
+alert ("What You Need To Know: \r\- Player 1 always goes first. \r\ \r\- Life-line: If a player wins a point, the opposing player unlocks the ability to 'undo' their opponent's move in the next game. \r\ \r\- First player to score 3 points unlocks an Easter Egg! \r\ \r\Good Luck and Have Fun!! :)");
 
 $(".playerTurn").text(player1.turn); //As player 1 always goes first.
 $(".playAgainMessage").css("visibility", "hidden"); // want to make sure that the play again button is hidden at first.
@@ -137,16 +137,20 @@ let player2Points = 0;
 // else
 // push this.id into the player2Arr
 // display O
+//
 
 
 // Function to check moves against the winning strategy based on whether it is player1 (even) or player2 (odd)
-const playGame = function () {
+let counter = 0; // use
+
+const playGame = function () { // Creating the objects of the characters really helps here!
       playLogger.push($(this).attr("id"));
-      if ((player1Array.length - player2Array.length) === 0 ) { //figures out of the turn is even or odd. Saved a couple of lines of code here. Creating the objects of the characters really helps here!
+      if (counter % 2 === 0) { //figures out of the turn is even. Saved a couple of lines of code here.
         player1Array.push($(this).attr("id")); //This pushes the specific id of the div into the array for
         $(this).text(player1.symbol);
+        counter += 1;
         $(this).off('click');
-            if (gameOutcomes(player1Array) == true) {
+            if (gameOutcomes(player1Array) == true) { //checks if the player1Arrays meets the winning strategy
                $('.cell').removeClass('hover');
                $(".playerOneAvatar").attr("src", player1.mediaWin);
                $(".playerTwoAvatar").attr("src", player2.mediaLose);
@@ -164,6 +168,7 @@ const playGame = function () {
       } else { //if it is not even. it is odd. so push to player 2's array.
         player2Array.push($(this).attr("id"));
         $(this).text(player2.symbol);
+        counter += 1;
         $(this).off('click');
             if (gameOutcomes(player2Array) == true) {
                $(".playerOneAvatar").attr("src", player1.mediaLose);
@@ -225,6 +230,7 @@ $(".playAgainMessage").click(function () {
   player1Array = []; //clearing up arrays to start afresh!
   player2Array = [];
   playLogger = [];
+  counter = 0;
   $(".playerOneAvatar").attr("src", player1.mediaPh);
   $(".playerTwoAvatar").attr("src", player2.mediaPh);
   $(".playAgainMessage").css("visibility", "hidden");
@@ -250,20 +256,20 @@ $(".playAgainMessage").click(function () {
 
 // Player 1 UNDO button functionality!!!
 $(".playerOneButton").click(function () { //reverse last two plays.
-let isEven = (player1Array.length - player2Array.length) === 0;
+let isEven = counter % 2 === 0;
 if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
   player2Array.pop();
-  player1Array.pop(); //from these two,removing all the background data.
+  // player1Array.pop(); //from these two,removing all the background data.
   let retract1 = playLogger[(playLogger.length - 1)]; // player 2 last move.
-  let retract2 = playLogger[(playLogger.length - 2)]; //player 1's last move. using these two to get the values of the things I need to remove.
-  playLogger.splice(-2, 2); // removing the background data.
+  // let retract2 = playLogger[(playLogger.length - 2)]; //player 1's last move. using these two to get the values of the things I need to remove.
+  playLogger.splice(-2, 1); // removing the background data.
   $(`#${retract1}`).text("");
-  $(`#${retract2}`).text("");
+  // $(`#${retract2}`).text("");
   $(".playerTurn").text(player1.undoStatement);
   $(".playerOneButton").attr("disabled", true);
   $(".playerOneButton").removeClass("buttonActive");
   $(`.${retract1}`).on('click', playGame);
-  $(`.${retract2}`).on('click', playGame);
+  // $(`.${retract2}`).on('click', playGame);
 } else if (playLogger.length <= 2) {
   alert('Not enough plays! Try again once your opponent has had another move.');
 } else {
@@ -273,20 +279,20 @@ if (isEven === true && playLogger.length >= 2) { //if value is even. ensures it 
 
 //Player 2 Undo button feature.
 $(".playerTwoButton").click(function () { //reverse last two plays.
-let isOdd = (player1Array.length - player2Array.length) === 1;
+let isOdd = counter % 2 !== 0;
 if (isOdd === true && playLogger.length >= 2) { //if value is even. ensures it is player one's turn.
   player1Array.pop();
-  player2Array.pop(); //from these two, I am removing all the background data.
+  // player2Array.pop(); //from these two, I am removing all the background data.
   let retract1 = playLogger[(playLogger.length - 1)]; // player 1 last move.
-  let retract2 = playLogger[(playLogger.length - 2)]; //player 2's last move. using these two to get the values of the things I need to remove.
-  playLogger.splice(-2, 2); // removing the background data.
+  // let retract2 = playLogger[(playLogger.length - 2)]; //player 2's last move. using these two to get the values of the things I need to remove.
+  playLogger.splice(-2, 1); // removing the background data.
   $(`#${retract1}`).text("");
-  $(`#${retract2}`).text("");
+  // $(`#${retract2}`).text("");
   $(".playerTurn").text(player2.undoStatement);
   $(".playerTwoButton").attr("disabled", true);
   $(".playerTwoButton").removeClass("buttonActive");
-  $(`.${retract1}`).on('click', playGame);
-  $(`.${retract2}`).on('click', playGame);
+  $(`.${retract1}`).on('click', playGame); //turns on the click which would have been disabled when they clicked onto the cell.
+  // $(`.${retract2}`).on('click', playGame);
 } else if (playLogger.length === 1) {
   alert('Not enough plays! Try again once your opponent has had another move.');
 } else {

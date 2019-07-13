@@ -7,9 +7,9 @@ https://iwishjames.github.io/tick_tac_toe/
 
 This is your standard game of tic-tac-toe with a simple twist - If a player gets a point, the opposing players unlocks the ability to undo the other player's move in the next round! *I feel this makes the game more balanced given the first player's first turn advantage.*
 
-Visually the game is targeted at a younger audience (ages:4-7) or those that identify with these ages ;)
+Visually the game is aimed at a younger audience.
 
-The movements of the characters were created using Apple's Animoji face-tracking feature - Yes, though I hate to admit it, I had to physically act out those character expressions. Each character has an expression for resting, winning and losing.
+The movements of the characters were created using Apple's Animoji face-tracking feature - Yes, though I hate to admit it, I had to physically act out those character expressions. Each character has an expression for resting, winning and losing (Check them out!).
 
 This game was built using HTML, CSS, JS/jQuery.
 
@@ -44,13 +44,17 @@ Check out her Project0 here: https://ratsamee.github.io/tictactoe/
 You can check out his tic-tac-toe here: https://meowsoso.github.io/turbo-sniffle/
 But even better, check out his puzzle/mystery game: https://meowsoso.github.io/Robot_run/
 
+- [@Nilana](https://github.com/nilanarocha) - I able to reference her game's code to figure out how I could improve my Odd or Even checker. You can check out her awesomely designed game here: https://nilanarocha.github.io/tic-tac-toe/.
+
 ----
 
 ## Challenges:
-- **Keeping it DRY!** - Try again button. instead of repeating the try again text within the JS code, just changed the original html to display try again and made it "visibility: visible" by changing it at the CSS level ```class="tryAgainVisible"``` From the other demos, I was learnt that I could have used ```.show``` and ```.hide``` instead.
+- **Keeping it DRY!** - Try again button. instead of repeating the try again text within the JS code, just changed the original html to display try again and made it ```visibility: visible``` (in CSS). From the other demos, I was learnt that I could have used ```.show``` and ```.hide``` instead.
 - **Ability to easily change characters** - Prior to finding a solution, I was manually changing each characteristic when having to switch the character for the easter egg. Best solution for this was to just create an object with all the character features.
 - **Undo feature** - Works similar to the reset button. This is where the playLogger and player arrays came in handy. I was able to identify the id's of the last two plays and use that to remove X and O inputs visually from the table. Then, I ```.pop()``` 'd them out from their respective arrays. Hmm...but now that I look at it, why not just get the ids from the individual player arrays than the playLogger array? - Just saved myself two lines!
-- **When to enable Undo feature** - Realised that the undo feature is rendered pointless at some points of the game. But if I was to enable it be active at all times, they could technically reverse at a win. I think this feature could be better utilised in online multiplayer environment - for now it is just K.I.S.S.
+- **When to enable Undo feature** - ~~Realised that the undo feature is rendered pointless at some points of the game. But if I was to enable it be active at all times, they could technically reverse at a win. I think this feature could be better utilised in online multiplayer environment - for now it is just K.I.S.S.~~
+I was able to resolve this by having it that only the opponent's play was removed and you still had your turn!
+Now it makes the game more interesting!! Still think it would be a cool feature in an online multiplayer environment!
 
 - **Easter Egg** - ensuring the character change only occurred once three points had been reached, and once it had been switched, that it not available to the other character (*Otherwise it would display the same input for both players/confusion*). Was able to take advantage of the odd or even functions and also a simple if function which looks at whether  player 1 or player 2 already had already unlocked the easter egg. see line 223: ```if (player1Points >= 3 && player2 !== egg) {```
 
@@ -78,9 +82,16 @@ ___
 
 ## Feature Freeze:
 The things I couldn't implement.
-- Animations and Transitions for more fluidity - especially animations of the boxes to clear the screen. An ideas was to have the "Try Again" button scale up and over the table and disappear at the top to leave empty tiles to start a new game!
+- Animations and Transitions for more fluidity - especially animations of the boxes to clear the screen. An idea was to have the "Try Again" button scale up and over the table and disappear at the top to leave empty tiles to start a new game!
 
-- Using sound/getting Joel's voice for the game - e.g. for a win - * sarcastically * "Yeah, will done!" or for a draw - * excited * "Well done it is a draw!"" - or maybe even a "Pathetic!"
+- Using sound/getting Joel's voice for the game - e.g.
+   - for a win:
+   >   *sarcastically* "Yeah, will done!";
+
+   - for a draw:
+   > *excited* "Well done it is a draw!"  
+
+   >or maybe even a "Pathetic!"
 - Including the instructions within the page than just as an alert at the start - would allow the player to access it at any time!
 - Ability to insert your own name for the character and/or select the emoji that is used for X or O.
 - Giving each animated character a personality. e.g. Cat has a more "I don't care" attitude.

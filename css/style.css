@@ -31,11 +31,12 @@ margin: 0 auto;
   margin: 120px 0 0 15px;
 }
 
-/* .Life-line {
-  text-decoration: overline;
+.Life-line {
+  /* text-decoration: overline;
   text-decoration-style: wavy;
-  text-decoration-color: #32dbc6;
-} */
+  text-decoration-color: #32dbc6; */
+  font-style: italic;
+}
 
 button {
   background-color: white;
@@ -76,9 +77,8 @@ main {
   margin-top: 5px;
   text-align: center;
   vertical-align: middle;
-  font-size: 55px;
+  font-size: 50px;
   line-height: 150px;
-  border-radius: 10px;
 }
 
 .hover:hover{
@@ -158,18 +158,20 @@ background: -webkit-linear-gradient(#8A2387, #E94057, #F27121);
 -webkit-text-fill-color: transparent;
 }
 
-.a1, .a2, .a3 {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.a1 {
+  border-top-left-radius: 10px;
 }
 
-.b1, .b2, .b3 {
-  border-radius: 0;
+.a3 {
+  border-top-right-radius: 10px;
 }
 
-.c1, .c2, .c3 {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.c1 {
+  border-bottom-left-radius: 10px;
+}
+
+.c3 {
+  border-bottom-right-radius: 10px;
 }
 
 /* Might save this for later if I end up creating an instructions button.  */
