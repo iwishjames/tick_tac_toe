@@ -86,7 +86,7 @@ The things I couldn't implement.
 
 - Using sound/getting Joel's voice for the game - e.g.
    - for a win:
-   >   *sarcastically* "Yeah, will done!";
+   > *sarcastically* "Yeah, will done!"
 
    - for a draw:
    > *excited* "Well done it is a draw!"  
