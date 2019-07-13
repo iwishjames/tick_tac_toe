@@ -301,3 +301,6 @@ if (isOdd === true && playLogger.length >= 2) { //if value is even. ensures it i
 });
 
 }); //this closes off the document.ready at the top! don't remove!!!
+
+
+//Thanks for scrolling to the end. Have a Good one! :)
